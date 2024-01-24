@@ -1,0 +1,99 @@
+@extends('template.temp_navbar')
+
+@section('content')
+<div class="modal" role="dialog" id="my_modal_8">
+    <form action="/topup-user" class="modal-box" method="POST">
+        @csrf
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <input type="number" name="credit" value="10000" class="input input-bordered">
+        <div class="modal-action">
+            <button type="submit" class="btn">Topup</button>
+            <a href="#" class="btn">Yay!</a>
+        </div>
+    </form>
+</div>
+<div class="modal" role="dialog" id="my_modal_wd">
+    <form action="/withdraw-user" class="modal-box" method="POST">
+        @csrf
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <input type="number" name="debit" value="10000" class="input input-bordered">
+        <div class="modal-action">
+            <button type="submit" class="btn">withdraw</button>
+            <a href="#" class="btn">Yay!</a>
+        </div>
+    </form>
+</div>
+    <div class="container mx-auto">
+        @if(session('status'))
+        <div class="toast toast-top toast-start">
+            <div class="alert alert-success">
+              <span>{{ session('status') }}</span>
+            </div>
+          </div>
+        @endif
+        <div class="flex flex-col p-3">
+            <div class="flex flex-col mb-10">
+                <div class="card w-full glass bg-base-100 shadow-xl p-6">
+                    <div class="card-body">
+                        <h2 class="card-title text-black">halo {{ Auth::user()->name }}</h2>
+                        <div class="flex items-center gap-4">
+                            <span class="text-black">Rp.{{ number_format($saldo_user) }}</span>
+                            <a href="#my_modal_8" class="btn">Topup</a>
+                            <a href="#my_modal_wd" class="btn">withdraw</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                @foreach ($products as $product)
+                    <div class="card w-[18rem] bg-base-100 shadow-xl">
+                        <figure><img src="{{ $product->photo }}"
+                                alt="Shoes" class="object-cover w-56 h-56 rounded-lg" /></figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                {{ $product->name }}
+                                <div class="badge badge-secondary">{{ $product->stock }}</div>
+                            </h2>
+                            <p>Rp.{{ number_format($product->price) }}</p>
+                            <p>{{ $product->description }}</p>
+                            <div class="card-actions">
+                                <div class="badge badge-outline">{{ $product->category->name }}</div>
+                                <div class="badge badge-outline">By: {{ $product->stand }}</div>
+                            </div>
+                            <div class="flex justify-between">
+                                <form action="/buy-now" method="post">
+                                    @csrf
+                                    <input type="hidden" name="price" value="{{ $product->price }}">
+                                    <input type="hidden" name="products_id" value="{{ $product->id }}">
+                                    <button class="btn" type="submit">Buy</button>
+                                </form>
+                                <form action="/add-to-cart" method="post">
+                                    @csrf
+                                    <input type="hidden" name="price" value="{{ $product->price }}">
+                                    <input type="hidden" name="products_id" value="{{ $product->id }}">
+                                    <input type="number" name="quantity" value="1" min="1"
+                                        class="input input-bordered w-20">
+                                    <button class="btn" type="submit">Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endsection
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- komentar -->
+<span></span>
+</body>
+</html>
