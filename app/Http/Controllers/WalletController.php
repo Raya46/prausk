@@ -75,7 +75,7 @@ class WalletController extends Controller
 
     public function withdrawUser(Request $request)
     {
-        $status = ['status', 'selesai withdraw'];
+        $status = ['selesai', 'selesai withdraw'];
         $wallets = Wallet::whereIn('status', $status)
         ->where('users_id', Auth::user()->id)
         ->get();
@@ -83,15 +83,17 @@ class WalletController extends Controller
         $debit = $wallets->sum('debit');
         $saldo_user = $credit - $debit;
 
-        if($saldo_user < $request->debit) return redirect()->back()->with('status', 'saldo kurang');
+        if($request->debit > $saldo_user) {
+            return redirect()->back()->with('status', 'saldo kurang');
+        } else {
+            Wallet::create([
+                'debit' => $request->debit,
+                'status' => 'proses withdraw',
+                'users_id' => Auth::user()->id
+            ]);
+            return redirect()->back()->with('status','success');
+        }
 
-        Wallet::create([
-            'debit' => $request->debit,
-            'status' => 'proses withdraw',
-            'users_id' => Auth::user()->id
-        ]);
-
-        return redirect()->back()->with('status','success');
     }
 
 }

@@ -79,7 +79,7 @@ class TransactionController extends Controller
                 'status' => 'dibayar',
                 'order_code' => $order_code
             ]);
-            
+
         $wallet->update([
             'debit' => $wallet->debit + $totalBayar,
         ]);
@@ -90,7 +90,8 @@ class TransactionController extends Controller
 
     public function buyNow(Request $request)
     {
-        $wallets = Wallet::where('status', 'selesai')
+        $status = ['selesai', 'selesai withdraw'];
+        $wallets = Wallet::whereIn('status', $status)
             ->where('users_id', Auth::user()->id)
             ->get();
         $credit = $wallets->sum('credit');
