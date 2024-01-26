@@ -71,4 +71,25 @@ class UserController extends Controller
     public function getRegister(){
         return view('register');
     }
+
+     public function putUser(Request $request, $id)
+        {
+            $user = User::find($id);
+
+            if ($request->password == '') {
+                $user->update([
+                    'name' => $request->name,
+                    'password' => $user->password,
+                    'roles_id' => $request->roles_id,
+                ]);
+            } else {
+                $user->update([
+                    'name' => $request->name,
+                    'password' => $request->password,
+                    'roles_id' => $request->roles_id,
+                ]);
+            }
+
+            return redirect()->back()->with('status', 'success update user');
+        }
 }

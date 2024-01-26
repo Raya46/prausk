@@ -61,21 +61,19 @@
     <div class="container mx-auto">
         <div class="flex flex-col p-3">
             <div class="flex flex-col mb-3">
-                <div class="card w-full glass bg-base-100 shadow-xl p-6">
-                    <div class="card-body">
+                <div class="w-full border bg-base-100 shadow-xl p-10">
                         <h2 class="card-title text-black">halo {{ Auth::user()->name }}</h2>
                         <div class="flex items-center gap-4">
-                            <a href="#my_modal_8" class="btn">Topup</a>
-                            <a href="#my_modal_wd" class="btn">withdraw</a>
+                            <a href="#my_modal_8" class="btn mt-2">Topup</a>
+                            <a href="#my_modal_wd" class="btn mt-2">withdraw</a>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="flex flex-col lg:flex-row w-full">
                 <div class="flex flex-col w-full p-4">
                     <span class="text-center mb-4 btn">Request topup</span>
                     @foreach ($walletsBank as $wb)
-                        <div class="flex items-center w-full border border-gray-50 rounded-lg my-2">
+                        <div class="flex items-center w-full border rounded-lg my-2">
                             <div class="flex flex-col p-4 w-full ">
                                 <div class="flex gap-2 w-full">
                                     <span>Rp.{{ number_format($wb->credit) }}</span>
@@ -95,7 +93,7 @@
                 <div class="flex flex-col w-full p-4">
                     <span class="text-center mb-4 btn">Request Withdraw</span>
                     @foreach ($withdrawBank as $wb)
-                        <div class="flex items-center w-full border border-gray-50 rounded-lg my-2">
+                        <div class="flex items-center w-full border rounded-lg my-2">
                             <div class="flex flex-col p-4 w-full">
                                 <div class="flex gap-2 w-full">
                                     <span>Rp.{{ number_format($wb->debit) }}</span>
@@ -117,7 +115,7 @@
                     <span class="text-center mb-4 btn">History Topup</span>
                     @foreach ($historyTopup as $wb)
                     @if ($wb->credit != 0)
-                    <div class="flex items-center w-full border border-gray-50 rounded-lg my-2">
+                    <div class="flex items-center w-full border rounded-lg my-2">
                         <div class="flex flex-col p-4 w-full">
                             <div class="flex gap-2 w-full">
                                 <span>Rp.{{ number_format($wb->credit) }}</span>
@@ -130,14 +128,14 @@
                         </div>
                     </div>
                     @endif
-                       
+
                     @endforeach
                 </div>
                 <div class="flex flex-col w-full p-4">
                     <span class="text-center mb-4 btn">History Withdraw</span>
                     @foreach ($historyWithdraw as $wb)
                     @if ($wb->debit != 0)
-                    <div class="flex items-center w-full border border-gray-50 rounded-lg my-2">
+                    <div class="flex items-center w-full border rounded-lg my-2">
                         <div class="flex flex-col p-4 w-full">
                             <div class="flex gap-2 w-full">
                                 <span>Rp.{{ number_format($wb->debit) }}</span>
@@ -149,7 +147,7 @@
                         </div>
                     </div>
                     @endif
-                       
+
                     @endforeach
                 </div>
             </div>

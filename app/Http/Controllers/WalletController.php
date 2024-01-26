@@ -54,7 +54,8 @@ class WalletController extends Controller
 
     public function withdrawBank(Request $request)
     {
-        $wallets = Wallet::where('status', 'selesai')->orWhere('status', 'selesai withdraw')
+        $status = ['selesai', 'selesai withdraw'];
+        $wallets = Wallet::whereIn('status', $status)
         ->where('users_id', $request->users_id)
         ->get();
         $credit = $wallets->sum('credit');
@@ -74,7 +75,8 @@ class WalletController extends Controller
 
     public function withdrawUser(Request $request)
     {
-        $wallets = Wallet::where('status', 'selesai')->orWhere('status', 'selesai withdraw')
+        $status = ['status', 'selesai withdraw'];
+        $wallets = Wallet::whereIn('status', $status)
         ->where('users_id', Auth::user()->id)
         ->get();
         $credit = $wallets->sum('credit');

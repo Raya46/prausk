@@ -33,30 +33,27 @@
         @endif
         <div class="flex flex-col p-3">
             <div class="flex flex-col mb-10">
-                <div class="card w-full glass bg-base-100 shadow-xl p-6">
-                    <div class="card-body">
-                        <h2 class="card-title text-black">halo {{ Auth::user()->name }}</h2>
+                <div class="w-full bg-base-100 shadow-xl p-10">
+                        <h2 class="card-title text-black mb-4">halo {{ Auth::user()->name }}</h2>
                         <div class="flex items-center gap-4">
                             <span class="text-black">Rp.{{ number_format($saldo_user) }}</span>
                             <a href="#my_modal_8" class="btn">Topup</a>
                             <a href="#my_modal_wd" class="btn">withdraw</a>
                         </div>
-                    </div>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                 @foreach ($products as $product)
-                    <div class="card w-[18rem] bg-base-100 shadow-xl">
+                    <div class="flex flex-col justify-center w-[18rem] bg-base-100 shadow-xl p-6">
                         <figure><img src="{{ $product->photo }}"
-                                alt="Shoes" class="object-cover w-56 h-56 rounded-lg" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title">
+                                alt="Shoes" class="object-cover w-56 h-56 rounded-lg mt-2" /></figure>
+                            <h2 class="card-title my-2">
                                 {{ $product->name }}
                                 <div class="badge badge-secondary">{{ $product->stock == 0 ? 'x' : $product->stock }}</div>
                             </h2>
                             <p>Rp.{{ number_format($product->price) }}</p>
                             <p>{{ $product->description }}</p>
-                            <div class="card-actions">
+                            <div class="card-actions my-2">
                                 <div class="badge badge-outline">{{ $product->category->name }}</div>
                                 <div class="badge badge-outline">By: {{ $product->stand }}</div>
                             </div>
@@ -77,7 +74,6 @@
                                     <button class="btn" type="submit">Cart</button>
                                 </form>
                             </div>
-                        </div>
                     </div>
                 @endforeach
             </div>

@@ -19,13 +19,13 @@
             <label class="label">
               <span class="label-text">Name</span>
             </label>
-            <input type="text" placeholder="name" name="name" class="input input-bordered" required />
+            <input type="text" required placeholder="name" name="name" class="input input-bordered" required />
           </div>
           <div class="form-control">
             <label class="label">
               <span class="label-text">Password</span>
             </label>
-            <input type="password" placeholder="password" name="password" class="input input-bordered" required />
+            <input type="password" required placeholder="password" name="password" class="input input-bordered" required />
             <label class="label">
               <a href="/login" class="label-text-alt link link-hover">Already have account?</a>
             </label>

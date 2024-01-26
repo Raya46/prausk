@@ -11,15 +11,15 @@
         </div>
       </div>
     @endif
-    <div class="container mx-auto">
-        <div class="card glass p-6">
-            <span class="text-xl font-bold btn mb-4">Cart</span>
+    <div class="container mx-auto p-4">
+        <div class="border flex flex-col justify-center p-6">
+            <span class="text-xl font-bold btn mb-4 ">Cart</span>
             <div class="flex flex-col gap-4">
                 @foreach ($transactions as $transaction)
                 @php
                     $totalBayar += $transaction->product->price * $transaction->quantity;
                 @endphp
-                <div class="card card-body bg-base-100 p-4">
+                <div class="border bg-base-100 p-4">
                     <div class="flex items-center justify-between">
                         <div class="flex gap-2 items-center">
                             <img src="{{ $transaction->product->photo }}" alt="none" class="w-24 h-24 rounded-lg">
@@ -37,16 +37,19 @@
                 </div>
             @endforeach
             </div>
-           
+
         </div>
     </div>
 
     <div class="btm-nav bg-transparent">
-    @if ($totalBayar != 0)
+    @if ($totalBayar > $saldo_user)
     <div class="flex">
-        @if ($totalBayar > $saldo_user)
-            <span>Saldo kurang: {{ $totalBayar - $saldo_user }}</span>
-        @endif
+        <span>uang kurang</span>
+    </div>
+    @elseif($totalBayar == 0)
+    <span></span>
+    @else
+    <div class="flex">
         <form action="/buy-from-cart" method="post">
             @csrf
             @method('PUT')
@@ -55,7 +58,7 @@
         </form>
     </div>
     @endif
-       
+
 
     </div>
 @endsection

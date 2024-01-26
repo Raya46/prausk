@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-theme="corporate">
 
 <head>
     <meta charset="utf-8">

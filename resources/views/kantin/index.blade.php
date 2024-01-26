@@ -58,14 +58,14 @@
     </div>
     <div class="container mx-auto">
         <div class="flex flex-col p-3">
-            <div class="card glass p-6">
+            <div class="border p-6">
                 <div class="flex items-center justify-between">
                     <span class="text-lg font-bold text-black">halo {{ Auth::user()->name }} ({{ Auth::user()->roles->name }})</span>
                     <a href="#my_modal_crt" class="btn btn-success">Create</a>
                 </div>
             </div>
 
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto border">
                 <table class="table">
                     <thead>
                         <tr>

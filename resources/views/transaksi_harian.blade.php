@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="container mx-auto">
-        <div class="card glass p-4">
+        <div class="p-4">
             @forelse ($transactions as $date => $transaction)
-                <div class="card card-body bg-base-100 border border-white my-2">
+                <div class="p-6 rounded-lg bg-base-100 border border-gray-300 my-2">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="text-lg font-bold">
                             {{ $date }}
                         </span>
-                        <a class="rounded-full btn bg-white" target="_blank" href="/transaksi-harian/{{ $date }}">
+                        <a class="rounded-full btn bg-white border border-gray-300" target="_blank" href="/transaksi-harian/{{ $date }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="fill-black" viewBox="0 0 16 16">
                                 <path
@@ -22,7 +22,7 @@
 
                     <div class="flex flex-wrap gap-4 w-full justify-center lg:justify-start items-center">
                         @foreach ($transaction as $ts)
-                        <div class="flex flex-col w-full lg:w-[30%] border border-white rounded-lg p-4 gap-2">
+                        <div class="flex flex-col w-full lg:w-[30%] border border-gray-300 rounded-lg p-4 gap-2">
                             <span class="text-lg font-bold">{{ $ts->product->name }}</span>
 
                             <div class="flex gap-2 items-center">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-theme="corporate">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
   <title>EFintech</title>
 </head>
 <body>
-    <div class="flex flex-col lg:flex-row navbar bg-base-100 sticky top-0 lg:sticky lg:top-0">
+    <div class="flex flex-col lg:flex-row navbar bg-base-100 fixed top-0">
         <div class="flex-1">
           <a href="/" class="btn btn-ghost text-xl">EFintech</a>
         </div>
@@ -30,6 +30,7 @@
           </ul>
         </div>
       </div>
+      <div class="mb-24 lg:mb-14"></div>
       @yield('content')
 </body>
 </html>
