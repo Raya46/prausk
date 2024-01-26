@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <h2 class="card-title">
                                 {{ $product->name }}
-                                <div class="badge badge-secondary">{{ $product->stock }}</div>
+                                <div class="badge badge-secondary">{{ $product->stock == 0 ? 'x' : $product->stock }}</div>
                             </h2>
                             <p>Rp.{{ number_format($product->price) }}</p>
                             <p>{{ $product->description }}</p>
@@ -65,6 +65,7 @@
                                     @csrf
                                     <input type="hidden" name="price" value="{{ $product->price }}">
                                     <input type="hidden" name="products_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
                                     <button class="btn" type="submit">Buy</button>
                                 </form>
                                 <form action="/add-to-cart" method="post">
@@ -83,17 +84,3 @@
         </div>
     </div>
 @endsection
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <!-- komentar -->
-<span></span>
-</body>
-</html>

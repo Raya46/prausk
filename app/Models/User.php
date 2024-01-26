@@ -41,20 +41,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function roles()
-    {
-        return $this->belongsTo(Role::class, 'roles_id');
-    }
+        public function roles()
+        {
+            return $this->belongsTo(Role::class, 'roles_id');
+        }
 
-    public function wallet()
-    {
-        return $this->hasOne(Wallet::class, 'wallets_id');
-    }
+        public function wallet()
+        {
+            return $this->hasOne(Wallet::class, 'wallets_id');
+        }
 
-    public function transaction()
-    {
-        return $this->hasOne(Transaction::class, 'transactions_id');
-    }
+        public function transaction()
+        {
+            return $this->hasOne(Transaction::class, 'transactions_id');
+        }
 
 
 }

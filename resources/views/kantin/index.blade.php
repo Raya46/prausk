@@ -8,13 +8,13 @@
         </div>
       </div>
     @endif
-    
+
     <div class="modal" role="dialog" id="my_modal_crt">
         <div class="modal-box">
             <h3 class="font-bold text-lg">Create Product</h3>
             <form method="post" enctype="multipart/form-data" action="/post-product" class="flex flex-col">
                 @csrf
-                <input class="input file-input-bordered" type="file" name="photo">
+                <input class="input file-input-bordered" type="file" name="photo" required>
                 <div class="flex gap-2">
                     <div class="flex flex-col gap-2">
                         <span>name</span>
@@ -62,9 +62,9 @@
                 <div class="flex items-center justify-between">
                     <span class="text-lg font-bold text-black">halo {{ Auth::user()->name }} ({{ Auth::user()->roles->name }})</span>
                     <a href="#my_modal_crt" class="btn btn-success">Create</a>
-                </div>    
+                </div>
             </div>
-            
+
             <div class="overflow-x-auto">
                 <table class="table">
                     <thead>

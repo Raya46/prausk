@@ -47,10 +47,10 @@ class UserController extends Controller
         $saldo_user = $credit - $debit;
 
         $categories = Category::all();
-        $walletsBank = Wallet::with('user')->where('status', 'proses')->get();
-        $withdrawBank = Wallet::with('user')->where('status', 'proses withdraw')->get();
-        $historyTopup = Wallet::with('user')->where('status', 'selesai')->get();
-        $historyWithdraw = Wallet::with('user')->where('status', 'selesai withdraw')->get();
+        $walletsBank = Wallet::latest()->with('user')->where('status', 'proses')->get();
+        $withdrawBank = Wallet::latest()->with('user')->where('status', 'proses withdraw')->get();
+        $historyTopup = Wallet::latest()->with('user')->where('status', 'selesai')->get();
+        $historyWithdraw = Wallet::latest()->with('user')->where('status', 'selesai withdraw')->get();
 
         if(Auth::user()->roles_id == 1) return view('siswa.index', compact('products', 'saldo_user'));
         if(Auth::user()->roles_id == 2) return view('kantin.index', compact('products', 'categories'));

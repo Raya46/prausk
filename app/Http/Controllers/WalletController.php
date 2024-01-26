@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class WalletController extends Controller
 {
-    public function topupUser(Request $request){
+    public function topupUser(Request $request)
+    {
         Wallet::create([
             'credit' => $request->credit,
             'status' => 'proses',
@@ -18,7 +19,8 @@ class WalletController extends Controller
         return redirect()->back()->with('status','success');
     }
 
-    public function topupFromBank(Request $request){
+    public function topupFromBank(Request $request)
+    {
         Wallet::create([
             'credit' => $request->credit,
             'status' => 'selesai',
@@ -28,7 +30,8 @@ class WalletController extends Controller
         return redirect()->back()->with('status','success');
     }
 
-    public function topupAccept($id){
+    public function topupAccept($id)
+    {
         $wallet = Wallet::find($id);
 
         $wallet->update([
@@ -38,7 +41,8 @@ class WalletController extends Controller
         return redirect()->back()->with('status','success');
     }
 
-    public function withdrawAccept($id){
+    public function withdrawAccept($id)
+    {
         $wallet = Wallet::find($id);
 
         $wallet->update([
@@ -48,7 +52,8 @@ class WalletController extends Controller
         return redirect()->back()->with('status','success');
     }
 
-    public function withdrawBank(Request $request){
+    public function withdrawBank(Request $request)
+    {
         $wallets = Wallet::where('status', 'selesai')->orWhere('status', 'selesai withdraw')
         ->where('users_id', $request->users_id)
         ->get();
@@ -67,7 +72,8 @@ class WalletController extends Controller
         return redirect()->back()->with('status','success');
     }
 
-    public function withdrawUser(Request $request){
+    public function withdrawUser(Request $request)
+    {
         $wallets = Wallet::where('status', 'selesai')->orWhere('status', 'selesai withdraw')
         ->where('users_id', Auth::user()->id)
         ->get();

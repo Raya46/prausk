@@ -20,8 +20,9 @@
                         </a>
                     </div>
 
-                    @foreach ($transaction as $ts)
-                        <div class="flex flex-col border border-white rounded-lg p-4 gap-2">
+                    <div class="flex flex-wrap gap-4 w-full justify-center lg:justify-start items-center">
+                        @foreach ($transaction as $ts)
+                        <div class="flex flex-col w-full lg:w-[30%] border border-white rounded-lg p-4 gap-2">
                             <span class="text-lg font-bold">{{ $ts->product->name }}</span>
 
                             <div class="flex gap-2 items-center">
@@ -33,14 +34,13 @@
                             <span class="text-xs mt-2 text-gray-500">{{ $ts->created_at }}</span>
                         </div>
                     @endforeach
+                    </div>
+
                 </div>
             @empty
                 <span class="text-center btn">Transaksi Kosong</span>
             @endforelse
-
-
         </div>
-
     </div>
     <div class="btm-nav bg-transparent">
         <a href="/download?type=ts" target="_blank">Download All</a>

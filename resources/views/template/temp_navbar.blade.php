@@ -7,7 +7,7 @@
   <title>EFintech</title>
 </head>
 <body>
-    <div class="navbar bg-base-100 sticky top-0">
+    <div class="flex flex-col lg:flex-row navbar bg-base-100 sticky top-0 lg:sticky lg:top-0">
         <div class="flex-1">
           <a href="/" class="btn btn-ghost text-xl">EFintech</a>
         </div>
