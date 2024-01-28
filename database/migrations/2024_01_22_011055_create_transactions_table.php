@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['dikeranjang', 'dibayar', 'diambil']);
+            $table->enum('status', ['dikeranjang', 'dibayar']);
             $table->string('order_code');
             $table->double('price');
             $table->integer('quantity');

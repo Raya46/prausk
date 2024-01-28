@@ -35,16 +35,6 @@ class TransactionController extends Controller
         return view('history', compact('transactions', 'transactionsAll'));
     }
 
-    public function takeOrder($id)
-    {
-        $transaction = Transaction::find($id);
-        $transaction->update([
-            "status" => "diambil"
-        ]);
-
-        return redirect()->back()->with('status', 'success');
-    }
-
     public function buyFromCart()
     {
         $wallet = Wallet::where("users_id", Auth::user()->id)->first();
