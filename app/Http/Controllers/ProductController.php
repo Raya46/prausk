@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         $productImagePath = $product->photo;
         $date = now()->format("dmYHis");
-        $photoPath='';
+        $photoPath = $product->photo;
 
         if ($request->hasFile('photo')) {
             $request->file('photo')->move("photos/", "$date.png");
