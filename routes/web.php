@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
@@ -35,4 +37,16 @@ Route::delete('/destroy-product/{id}', [ProductController::class, 'destroy']);
 Route::get('/transaksi-harian', [TransactionController::class, 'transaksiHarian']);
 Route::get('/transaksi-harian/{date}', [TransactionController::class, 'downloadTransaksiHarian']);
 
+Route::get('/role', [RoleController::class, 'index']);
+Route::post('/post-role', [RoleController::class, 'store']);
+Route::put('/put-role/{id}', [RoleController::class, 'putRole']);
+Route::delete('/destroy-role/{id}', [RoleController::class, 'destroy']);
 
+Route::post('/post-user', [UserController::class, 'store']);
+Route::put('/put-user/{id}', [UserController::class, 'putUser']);
+Route::delete('/destroy-user/{id}', [UserController::class, 'destroy']);
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/post-category', [CategoryController::class, 'store']);
+Route::put('/put-category/{id}', [CategoryController::class, 'update']);
+Route::delete('/destroy-category/{id}', [CategoryController::class, 'destroy']);

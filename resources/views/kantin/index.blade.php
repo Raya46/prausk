@@ -1,4 +1,4 @@
-@extends('template.temp_navbar')
+@extends('template.temp_admin')
 
 @section('content')
 @if(session('status'))
@@ -56,16 +56,16 @@
             </form>
         </div>
     </div>
-    <div class="container mx-auto">
-        <div class="flex flex-col p-3">
-            <div class="border p-6">
-                <div class="flex items-center justify-between">
-                    <span class="text-lg font-bold text-black">halo {{ Auth::user()->name }} ({{ Auth::user()->roles->name }})</span>
-                    <a href="#my_modal_crt" class="btn btn-success">Create</a>
-                </div>
-            </div>
-
-            <div class="overflow-x-auto border">
+    <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
+        <div class="flex items-center">
+            <h1 class="font-semibold text-lg md:text-2xl">Products</h1>
+            <a href="#my_modal_crt"
+                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 ml-auto">
+                Add product
+            </a>
+        </div>
+        <div class="border shadow-sm rounded-lg">
+            <div class="relative w-full overflow-auto">
                 <table class="table">
                     <thead>
                         <tr>
@@ -171,5 +171,8 @@
                 </table>
             </div>
         </div>
-    </div>
+    </main>
+
+
 @endsection
+

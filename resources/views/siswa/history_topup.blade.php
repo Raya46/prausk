@@ -1,9 +1,8 @@
-@extends('template.temp_navbar')
+@extends('template.temp_admin')
 
 @section('content')
     <div class="container mx-auto">
         <div class="flex flex-col p-3">
-            <div class="border p-6">
                 <div class="flex flex-col ">
                     <div class="flex items-center justify-center text-2xl gap-3">
                         <span class="border bg-base-100 p-4 rounded-lg">History Topup</span>
@@ -35,7 +34,6 @@
 
                 </div>
 
-            </div>
         </div>
     </div>
 

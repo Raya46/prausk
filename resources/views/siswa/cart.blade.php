@@ -1,4 +1,4 @@
-@extends('template.temp_navbar')
+@extends('template.temp_admin')
 
 @section('content')
     @php

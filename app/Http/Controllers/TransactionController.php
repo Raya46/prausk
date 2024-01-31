@@ -201,28 +201,23 @@ class TransactionController extends Controller
             return view('download', compact('wallets', 'params'));
         }
 
-        if(Auth::user()->roles_id == 3 && $request->type == 'ts'){
-            $transactions = Transaction::latest()->with("product", "user")->get();
-            return view("download", compact("transactions", 'params'));
-        }
-        if(Auth::user()->roles_id == 2 && $request->type == 'ts'){
-            $transactions = Transaction::latest()->with("product", "user")->get();
-            return view("download", compact("transactions", 'params'));
-        }
-
         if(Auth::user()->roles_id == 1 && $request->type == 'ts'){
             $transactions = Transaction::latest()->with("product")->where('users_id', Auth::user()->id)->get();
+            return view("download", compact("transactions", 'params'));
+        } else {
+            $transactions = Transaction::latest()->with("product", "user")->get();
             return view("download", compact("transactions", 'params'));
         }
 
         if(Auth::user()->roles_id == 1 && $request->type == 'hs'){
             $transactions = Transaction::latest()->with("product")->where('users_id', Auth::user()->id)->get();
             return view("download", compact("transactions", 'params'));
-        }
-        if(Auth::user()->roles_id == 2 && $request->type == 'hs'){
+        } else {
             $transactions = Transaction::latest()->with("product", "user")->get();
             return view("download", compact("transactions", 'params'));
         }
+        
+
 
     }
 }

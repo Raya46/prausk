@@ -28,6 +28,9 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'bank'
         ]);
+        Role::create([
+            'name' => 'admin'
+        ]);
 
         User::create([
             'name' => 'raya',
@@ -39,6 +42,7 @@ class DatabaseSeeder extends Seeder
             'password' => '999',
             'roles_id' => 1
         ]);
+
         User::create([
             'name' => 'rizki',
             'password' => '345',
@@ -49,6 +53,13 @@ class DatabaseSeeder extends Seeder
             'password' => '567',
             'roles_id' => 3
         ]);
+
+        User::create([
+            'name' => 'admin',
+            'password' => '333',
+            'roles_id' => 4
+        ]);
+        
         Category::create([
             'name' => 'makanan'
         ]);

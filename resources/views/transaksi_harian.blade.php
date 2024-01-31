@@ -1,4 +1,4 @@
-@extends('template.temp_navbar')
+@extends('template.temp_admin')
 
 @section('content')
     <div class="container mx-auto">
@@ -42,7 +42,8 @@
             @endforelse
         </div>
     </div>
-    <div class="btm-nav bg-transparent">
-        <a href="/download?type=ts" target="_blank">Download All</a>
+
+    <div class="fixed bottom-0 flex left-[50rem] w-full">
+        <a href="/download?type=ts" target="_blank" class="btn">Download All</a>
     </div>
 @endsection
