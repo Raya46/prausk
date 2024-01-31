@@ -24,7 +24,6 @@
                         @foreach ($transaction as $ts)
                         <div class="flex flex-col w-full lg:w-[30%] border border-gray-300 rounded-lg p-4 gap-2">
                             <span class="text-lg font-bold">{{ $ts->product->name }}</span>
-
                             <div class="flex gap-2 items-center">
                                 <span>Rp.{{ number_format($ts->price) }} {{ $ts->quantity }}x</span>
                                 <span class="badge badge-outline">{{ $ts->status }}</span>
@@ -33,9 +32,8 @@
 
                             <span class="text-xs mt-2 text-gray-500">{{ $ts->created_at }}</span>
                         </div>
-                    @endforeach
+                        @endforeach
                     </div>
-
                 </div>
             @empty
                 <span class="text-center btn">Transaksi Kosong</span>

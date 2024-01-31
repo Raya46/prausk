@@ -41,7 +41,7 @@ class UserController extends Controller
         $products = Product::with('category')->get();
 
         $users = User::where('roles_id', 1)->with('roles')->get();
-        $allUsers = User::whereIn('roles_id', $role_list)->with('roles')->get();
+        $allUsers = User::latest()->whereIn('roles_id', $role_list)->with('roles')->get();
         $wallets = Wallet::whereIn('status', $status)
         ->where('users_id', Auth::user()->id)
         ->get();

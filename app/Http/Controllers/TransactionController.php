@@ -171,7 +171,7 @@ class TransactionController extends Controller
             $reports = Transaction::latest()->with("product")->where('users_id', Auth::user()->id)->whereDate("created_at", "=", $date)->get();
             $code = $date;
         } else {
-            $reports = Transaction::latest()->with("product")->whereDate("created_at", "=", $date)->get();
+            $reports = Transaction::latest()->with("product", "user")->whereDate("created_at", "=", $date)->get();
             $code = $date;
         }
 

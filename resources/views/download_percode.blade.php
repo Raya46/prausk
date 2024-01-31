@@ -10,7 +10,7 @@
             $totalBayar += $report->product->price * $report->quantity;
         @endphp
         <div class="card bg-base-100 p-6 mt-4">
-            <span class="text-2xl font-bold text-white">
+            <span class="text-2xl font-bold">
                 {{ $report->order_code }}
             </span>
 
